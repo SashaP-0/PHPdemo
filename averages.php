@@ -10,7 +10,7 @@
 <h2>Averages</h2>
 
 <form method="post" action="">
-    <label for="numCount">How many numbers do you want to average?</label>
+    <label for="numCount">How many numbers?</label>
     <input type="number" id="numCount" name="numCount" min="1" required><br><br>
 
     <?php

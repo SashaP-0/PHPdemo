@@ -25,7 +25,6 @@
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Get the marks from user input
     $analysis = $_POST['analysis'];
     $design = $_POST['design'];
     $implementation = $_POST['implementation'];
@@ -73,11 +72,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             break;
     }
 
-    // Calculate how many more marks are needed to get to the next band
     $marksNeeded = $nextMarkBand - $totalMarks;
 
-    // Display the result
-    echo "<h3>Results:</h3>";
     echo "<p>Total Marks: $totalMarks</p>";
     echo "<p>Grade: $grade</p>";
     echo "<p>Marks needed to reach the next grade: $marksNeeded</p>";
