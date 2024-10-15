@@ -9,12 +9,13 @@
 <form method="post" action="">
     <label for="balance">Starting Balance (£):</label>
     <input type="number" id="balance" name="balance" step="0.01" required><br><br>
+    
+    <label for="final">Desired Balance (£):</label>
+    <input type="number" id="final" name="final" step="0.01" required><br><br>
 
-    <label for="interestRate">Interest Rate:</label>
-    <input type="number" id="interestRate" name="interestRate" step="0.01" required><br><br>
+    <label for="interest">Interest Rate:</label>
+    <input type="number" id="interest" name="interest" step="0.01" required><br><br>
 
-    <label for="desiredBalance">Desired Balance (£):</label>
-    <input type="number" id="desiredBalance" name="desiredBalance" step="0.01" required><br><br>
 
     <input type="submit" value="Calculate">
 </form>
@@ -22,20 +23,20 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $balance = $_POST['balance'];
-    $interestRate = $_POST['interestRate'];
-    $desiredBalance = $_POST['desiredBalance'];
-
+    $interest = $_POST['interest'] ; 
+    $final = $_POST['final'];
 
     $year = 1;
-    echo "<h3>Starting balance: £" . number_format($balance, 2) . " — Interest rate: " . ($interestRate * 100) . "%</h3>";
+    echo "<h3>Starting balance: £" . number_format($balance, 2) . " — Interest rate: " . ($interest * 100) . "%</h3>";
 
-    while ($balance < $desiredBalance) {
-        $balance += $balance * $interestRate;
+    while ($balance < $final) {
+        $balance += $balance * $interest;
         echo "Year $year: New balance = £" . number_format($balance, 2) . "<br>";
-        $year+=1;
+        $year++;
     }
-    $year -=1;
-    echo "<h3>It will take $year years to reach £$desiredBalance </h3>";
+
+    $year--; 
+    echo "<h3>It will take $year years to reach £" . number_format($final, 2) . "</h3>";
 }
 ?>
 
